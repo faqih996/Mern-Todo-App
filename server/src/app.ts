@@ -1,8 +1,8 @@
-import express, { Request, Response } from "express";
-import mongoose from "mongoose";
-import cors from 'cors';
+import express from 'express'
+import mongoose from 'mongoose'
+import cors from 'cors'
 
-import routes from "./routes";
+import routes from './routes'
 
 const app = express()
 const PORT = 8080

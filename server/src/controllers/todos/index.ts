@@ -2,10 +2,9 @@ import { Request, Response } from 'express'
 
 import TodoModel from '../../models/todo'
 import { Todo } from '../../types/todo'
-import { title } from 'process'
 
 // index, get array data from mongoose database
-export const getTodos = async (req: Request, res: Response) => {
+export const getTodos = async (req: Request, res: Response): Promise<void> => {
 
     const todos: Todo[] = await TodoModel.find()
 
@@ -14,7 +13,7 @@ export const getTodos = async (req: Request, res: Response) => {
 }
 
 // details, menampilkan data berdasarkan id
-export const getTodo = async (req: Request, res: Response) => {
+export const getTodo = async (req: Request, res: Response): Promise<void> => {
 
     await TodoModel.findById(req.params.id, (err, result) => {
 
