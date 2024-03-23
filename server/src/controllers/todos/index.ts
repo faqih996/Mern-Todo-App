@@ -43,7 +43,7 @@ export const addTodo = async (req: Request, res: Response): Promise<void> => {
     if (!body.title || !body.status) {
         res.status(401).json({
             status: 401,
-            errorMessage: `ValidationError: Todo validation failed: title: ${body.title}, statsu: ${body.status}`
+            errorMessage: `ValidationError: Todo validation failed: title: ${body.title}, status: ${body.status}`
         });
 
         // return supaya jika terjadi error maka code dibawah return tidak perlu dijalankan
@@ -147,7 +147,7 @@ export const removeTodo = async (req: Request, res: Response): Promise<void> => 
 
     // memberi pesan sukses dan tampil semua data
     res.status(200).json({
-        message: 'Todo successfully edited',
+        message: 'Todo successfully removed',
         removedTodo,
         todos: updatedAllTodosAfterRemove
     });

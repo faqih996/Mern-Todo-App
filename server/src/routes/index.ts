@@ -23,7 +23,7 @@ const jsonParser = bodyParser.json()
 router.get('/api/todos', getTodos)
 
 // route detail todo
-router.get('api/todos/:id', getTodo)
+router.get('/api/todo/:id', getTodo)
 
 // route add todo
 router.post('/api/add-todo', jsonParser, addTodo)
