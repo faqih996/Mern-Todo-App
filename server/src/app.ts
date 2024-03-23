@@ -15,8 +15,11 @@ const {
 // link from mongoose
 const uri = `mongodb+srv://${MONGODB_ATLAS_USERNAME}:${MONGODB_ATLAS_PASSWORD}@clustertodo.einasjd.mongodb.net/${MONGODB_ATLAS_DBNAME}?retryWrites=true&w=majority`
 
-const options = { useNew }
+// untuk mongoose connect from documentation
+const options = { useNewUrlParser: true, UseUnifiedTopology: true }
 
+// activation cors to open access from cors policy
+app.use(cors())
 
 app.get('/', (req: Request, res: Response) => {
     res.send('Hello, World!')
@@ -26,6 +29,17 @@ app.get('/about', (req: Request, res: Response) => {
     res.send('This is about route!')
 })
 
-app.listen(PORT, () => {
-    console.info(`App is listening at http://localhost:${PORT}`)
-})
+// memberikan option use modify true
+mongoose.set('useFindAndModify', true)
+
+// mengambil url route diatas
+mongoose.connect(uri, options)
+    .then(() => {
+        app.listen(PORT, () => {
+            console.info(`App is listening at http://localhost:${PORT}`)
+        })
+    })
+    .catch((error) => {
+        throw error
+    })
+
