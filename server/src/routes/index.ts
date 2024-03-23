@@ -1,6 +1,18 @@
-import { Router } from "express";
+import { Router } from 'express'
+import bodyParser from 'body-parser'
+
+import {
+    getTodos,
+    getTodo,
+    addTodo,
+    updateTodo,
+    removeTodo
+} from '../controllers/todos'
 
 const router = Router()
+
+// initiate body parser untuk parsing/mengamankan pengiriman dokumen
+const jsonParser = bodyParser.json()
 
 // endpoint API
 // router.get adalah waiter
@@ -14,12 +26,12 @@ router.get('/api/todos', getTodos)
 router.get('api/todos/:id', getTodo)
 
 // route add todo
-router.post('/api/add-todo', addTodo)
+router.post('/api/add-todo', jsonParser, addTodo)
 
 // route update todo
-router.put('/api/update-todo/:id', updateTodo)
+router.put('/api/update-todo/:id', jsonParser, updateTodo)
 
 //route delet todo
-router.delete('/api/remove-todo/:id', removeTodo)
+router.delete('/api/remove-todo/:id', jsonParser, removeTodo)
 
 export default router
