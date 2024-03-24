@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import webFontLoader from 'webfontloader';
-
+import { QueryCache, ReactQueryCacheProvider } from 'react-query';
 
 import './assets/styles/main.css';
 import App from './App';
 
+// membuat cache pada browser
+const queryCache = new QueryCache()
 
 webFontLoader.load({
   google: {
@@ -15,8 +17,9 @@ webFontLoader.load({
 
 ReactDOM.render(
   <>
-    
+    <ReactQueryCacheProvider queryCache={queryCache}>
       <App />
+    </ReactQueryCacheProvider>
     
     {/* <ReactQueryDevtools initialIsOpen /> */}
   </>,
