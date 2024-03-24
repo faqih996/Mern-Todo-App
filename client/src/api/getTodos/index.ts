@@ -10,7 +10,7 @@ export const getTodos = async (): Promise<Todos> => {
 
     } catch (error) {
         
-        throw new Error()
+        throw new Error(error)
         
     }
 }

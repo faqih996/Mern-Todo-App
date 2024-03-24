@@ -22,27 +22,20 @@ const TaskList: React.FC = () => {
         )
     }
 
-    return (
-        <section className="flex flex-col overflow-x-hidden overflow-y-auto h-taskList rounded">
-            
-            {
-                // ambil data dari database dengan map
-                data?.todos.map((todo) => {
-                    return (
-                        // mengambil parameter dari data, untuk proses update
-                        <TaskCard
-                            key={todo._id}
-                            title={todo.title}
-                            taskId={todo._id}
-                            status={todo.status}
-                        />
-
-                    )
-                })
-            }
-
-        </section>
-    )
+   return (
+    <section className="flex flex-col overflow-x-hiden overflow-y-auto h-taskList rounded">
+      {data?.todos.map((todo) => {
+        return (
+          <TaskCard
+            key={todo._id}
+            title={todo.title}
+            taskId={todo._id}
+            status={todo.status}
+          />
+        )
+      })}
+    </section>
+  )
 }
 
 export default TaskList
